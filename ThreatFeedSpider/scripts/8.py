@@ -3,9 +3,8 @@
 import sys
 import download
 
-reload(sys) 
+reload(sys)
 sys.setdefaultencoding('utf8')
-
 
 source = '8'
 url = 'http://danger.rulez.sk/projects/bruteforceblocker/blist.php'

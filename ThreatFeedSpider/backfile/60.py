@@ -28,7 +28,7 @@ COUNT = 0
 def GetThePage(url, name, time, fm):
     headers = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'}
     request = urllib2.Request(url, None, headers)
-    # global COUNT
+    global COUNT
     try:
         response = urllib2.urlopen(request, timeout=30)
     except urllib2.HTTPError as e:
@@ -39,7 +39,7 @@ def GetThePage(url, name, time, fm):
         except urllib2.HTTPError as e:
             pass
         except:
-            # global thnum
+            global thnum
             thnum -= 1
             pass
         else:
@@ -51,7 +51,7 @@ def GetThePage(url, name, time, fm):
         print e.reason
         pass
     else:
-        # global page
+        global page
         page = response.read()
         filename = "%s_%s.%s" % (name, time, fm)
         FILE = open(r"%s.html" % COUNT, 'wb+')
@@ -106,11 +106,11 @@ if __name__ == '__main__':
     # get all the file in the list except 46.py
     PATH_before = os.getcwd()
     s_before = os.listdir(PATH_before.encode('utf-8'))
-    # global COUNT
+    global COUNT
     GetThePage('http://iplists.firehol.org/all-ipsets.json', 'data', '20170925', 'json')
-    # global page
+    global page
     DisposePage('0.html')
-    # global thnum
+    global thnum
 
     for i in xrange(0, 10):
         t = DownFile()
